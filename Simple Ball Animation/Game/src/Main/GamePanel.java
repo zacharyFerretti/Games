@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class GamePanel extends JPanel{
 	
 	private BufferedImage image;
@@ -33,7 +34,7 @@ public class GamePanel extends JPanel{
 			repaint();
 			
 			try {
-				Thread.sleep(20);
+				Thread.sleep(40);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -44,8 +45,9 @@ public class GamePanel extends JPanel{
 	//Create Image in Memory.
 	public void draw() {
 		
+		Color col = new Color(255,153,0);
 		//Background Layer
-		graphics2.setColor(Color.ORANGE);
+		graphics2.setColor(col);
 		graphics2.fillRect(0,0,GameWindow.WIDTH,GameWindow.HEIGHT);
 		theBall.draw(graphics2);
 		

@@ -16,10 +16,10 @@ public class ball {
 		x = GameWindow.WIDTH/2;
 		y = GameWindow.HEIGHT/2;
 		
-		xVel = 15;
-		yVel = 25;
+		xVel = 5;
+		yVel = 10;
 		
-		c = new Color(179,240,255);
+		c = new Color(0,204,255);
 		size = 20;
 	}
 	
