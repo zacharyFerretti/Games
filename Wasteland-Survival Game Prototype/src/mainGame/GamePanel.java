@@ -16,13 +16,16 @@ public class GamePanel extends JPanel{
 	private Graphics2D graphics2;
 	private boolean running;
 	public JLabel label;
+	public JLabel cowboyLabel;
 	public GamePanel(String arg) {
 		
 		if (arg==null) { arg = "C:/Users/Owner/Documents/GitHub/Games/Wasteland-Survival Game Prototype/src/mainGame/testSprite.png"; }
 		ImageIcon sprite = new ImageIcon(arg);
 		label = new JLabel();
 		label.setIcon(sprite);
-		
+		ImageIcon cowboy = new ImageIcon("C:/Users/Owner/Documents/GitHub/Games/Wasteland-Survival Game Prototype/src/mainGame/cowboy.png");
+		cowboyLabel = new JLabel();
+		cowboyLabel.setIcon(cowboy);
 		
 		running=true;
 		image = new BufferedImage(MainWindow.WIDTH, MainWindow.HEIGHT,BufferedImage.TYPE_INT_RGB);
@@ -55,10 +58,10 @@ public class GamePanel extends JPanel{
 	//Create Image in Memory.
 	public void draw() {
 		
-		Color col = new Color(140,242,242);
-		//Background Layer
-		graphics2.setColor(Color.ORANGE);
-		graphics2.fillRect(0,0,MainWindow.WIDTH,MainWindow.HEIGHT);
+//		Color col = new Color(140,242,242);
+//		//Background Layer
+//		graphics2.setColor(Color.ORANGE);
+//		graphics2.fillRect(0,0,MainWindow.WIDTH,MainWindow.HEIGHT);
 		
 	}
 	
