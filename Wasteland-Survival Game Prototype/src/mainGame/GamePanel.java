@@ -18,7 +18,7 @@ public class GamePanel extends JPanel{
 	public JLabel label;
 	public GamePanel(String arg) {
 		
-		if (arg==null) { arg = "C:/Users/Owner/eclipse-workspace/Wasteland-Survival Game Prototype/src/mainGame/testSprite.png"; }
+		if (arg==null) { arg = "C:/Users/Owner/Documents/GitHub/Games/Wasteland-Survival Game Prototype/src/mainGame/testSprite.png"; }
 		ImageIcon sprite = new ImageIcon(arg);
 		label = new JLabel();
 		label.setIcon(sprite);
@@ -55,9 +55,9 @@ public class GamePanel extends JPanel{
 	//Create Image in Memory.
 	public void draw() {
 		
-		Color col = new Color(242,242,242);
+		Color col = new Color(140,242,242);
 		//Background Layer
-		graphics2.setColor(col);
+		graphics2.setColor(Color.ORANGE);
 		graphics2.fillRect(0,0,MainWindow.WIDTH,MainWindow.HEIGHT);
 		
 	}

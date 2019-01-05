@@ -11,6 +11,7 @@ public class GameWindow {
 	public static void main(String[] args) { 
 		JFrame theWindow = new JFrame("Game");
 		GamePanel thePanel = new GamePanel();
+		thePanel.setOpaque(false);
 		theWindow.setSize(WIDTH, HEIGHT);
 		theWindow.setResizable(false);
 		theWindow.setLocationRelativeTo(null);

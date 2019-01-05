@@ -9,6 +9,7 @@ public class MainWindow {
 	public static void main(String[] args) {
 		JFrame theWindow = new JFrame("Game");
 		GamePanel thePanel = new GamePanel(args.length==0 ? null : args[0]);
+		thePanel.setOpaque(false);
 		theWindow.setSize(WIDTH, HEIGHT);
 		theWindow.setResizable(false);
 		theWindow.setLocationRelativeTo(null);
