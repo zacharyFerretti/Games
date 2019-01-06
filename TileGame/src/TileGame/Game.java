@@ -4,6 +4,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
 import Display.Display;
+import Input.KeyManager;
 import gfx.Assets;
 import gfx.ImageLoader;
 import gfx.SpriteSheet;
@@ -28,7 +29,8 @@ public class Game implements Runnable {
 	//States
 	private State gameState, menuState;
 	
-	
+	//Input
+	private KeyManager keyManager;
 	
 	
 	public Game(String title, int width, int height) {
@@ -36,15 +38,17 @@ public class Game implements Runnable {
 		this.height = height;
 		this.title = title;
 		System.out.println(this.width);
+		keyManager = new KeyManager();
 		
 	}
 	//This method initializes the graphics of our game and gets things ready to game.
 	private void init() {
 		display = new Display(title,width,height);
+		display.getFrame().addKeyListener(keyManager);
 		Assets.init();
 		
-		gameState = new GameState();
-		menuState = new MenuState();
+		gameState = new GameState(this);
+		menuState = new MenuState(this);
 		
 		State.setState(gameState);
 	}
@@ -53,6 +57,8 @@ public class Game implements Runnable {
 	
 	
 	private void update() {
+		keyManager.tick();
+		
 		if(State.getState()!= null) {
 			State.getState().update();
 		}
@@ -117,6 +123,11 @@ public class Game implements Runnable {
 		stop();
 		
 	}
+	
+	public KeyManager getKeyManager() {
+		return keyManager;
+	}
+	
 	//Threading.
 	public synchronized void start() {
 		if(running) {return;}
