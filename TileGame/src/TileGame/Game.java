@@ -4,7 +4,12 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
 import Display.Display;
+import gfx.Assets;
 import gfx.ImageLoader;
+import gfx.SpriteSheet;
+import states.GameState;
+import states.MenuState;
+import states.State;
 
 public class Game implements Runnable {
 	
@@ -20,22 +25,37 @@ public class Game implements Runnable {
 	private BufferStrategy bs;
 	private Graphics g;
 	
-	private BufferedImage temp;
+	//States
+	private State gameState, menuState;
+	
+	
+	
 	
 	public Game(String title, int width, int height) {
 		this.width = width;
 		this.height = height;
 		this.title = title;
+		System.out.println(this.width);
 		
 	}
 	//This method initializes the graphics of our game and gets things ready to game.
 	private void init() {
 		display = new Display(title,width,height);
+		Assets.init();
 		
+		gameState = new GameState();
+		menuState = new MenuState();
+		
+		State.setState(gameState);
 	}
 	
+	
+	
+	
 	private void update() {
-		
+		if(State.getState()!= null) {
+			State.getState().update();
+		}
 	}
 	
 	private void render() {
@@ -49,8 +69,10 @@ public class Game implements Runnable {
 		g.clearRect(0, 0, width, height); //Clears the screen.
 		//Draw Here!
 		
-		g.drawImage(ImageLoader.loadImage("/textures/cowboy.png"), 20, 20, null);
-		g.drawImage(ImageLoader.loadImage("/textures/testSprite.png"), 40, 40,null);
+		if(State.getState()!= null) {
+			State.getState().render(g);
+		}
+		
 		//End Drawing
 		
 		bs.show();
@@ -61,9 +83,35 @@ public class Game implements Runnable {
 		
 		init();
 		
+		int fps = 60; //How many times every second that tick and render should be called.
+		double timePerTick = 1000000000/fps; //Maximum amount of time we are allowed to run tick and render
+											 //for to still get 60 fps.
+		double delta = 0;
+		long now;
+		long lastTime = System.nanoTime();
+		long timer = 0;
+		int ticks = 0;
+		
 		while(running) {
-			update();
-			render();			
+			now = System.nanoTime();
+			delta += (now - lastTime) / timePerTick;
+			timer += (now - lastTime);
+			lastTime = now;
+			
+			//This means if the time accumulated since the last tick and render is greater than one
+			//(longer than one second) then we will run this again.
+			if(delta >= 1) {
+				update();
+				render();
+				ticks++;
+				delta--;
+			}
+			
+			/**if(timer >= 1000000000) {
+				System.out.println("Ticks and Frames: " + ticks);
+				ticks=0;
+				timer=0;
+			}**/
 		}
 		
 		stop();
