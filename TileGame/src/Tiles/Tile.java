@@ -9,7 +9,7 @@ public class Tile {
 	public static Tile[] tiles = new Tile[256];
 	public static Tile treeTile = new TreeTile(0);
 	public static Tile pitTile = new PitTile(1);
-	public static Tile RiverTile = new RiverTile(2);
+	public static Tile riverTile = new RiverTile(2);
 	
 	
 	//Class Stuff Here
@@ -24,11 +24,11 @@ public class Tile {
 		
 		tiles[id] = this;
 	}
-	public void tick(Graphics g, int x, int y) {
-		g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT,null);
-	}
-	public void render() {
+	public void tick() {
 		
+	}
+	public void render(Graphics g, int x, int y) {
+		g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT,null);
 	}
 	public boolean isSolid() {
 		return false;
