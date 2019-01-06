@@ -2,8 +2,8 @@ package states;
 
 import java.awt.Graphics;
 
-import TileGame.Game;
 import gfx.Assets;
+import tilegame.Game;
 
 public class MenuState extends State {
 	public MenuState(Game game) {

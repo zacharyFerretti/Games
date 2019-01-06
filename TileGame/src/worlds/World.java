@@ -2,8 +2,8 @@ package worlds;
 
 import java.awt.Graphics;
 
-import Tiles.PitTile;
-import Tiles.Tile;
+import tiles.PitTile;
+import tiles.Tile;
 
 public class World {
 	private int width, height;

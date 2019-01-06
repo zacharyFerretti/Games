@@ -1,4 +1,4 @@
-package Tiles;
+package tiles;
 import gfx.Assets;
 
 public class TreeTile extends Tile  {

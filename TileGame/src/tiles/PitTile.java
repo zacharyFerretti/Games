@@ -1,4 +1,4 @@
-package Tiles;
+package tiles;
 import gfx.Assets;
 
 public class PitTile extends Tile {
@@ -7,5 +7,9 @@ public class PitTile extends Tile {
 		super(Assets.PitScene, id);
 	}
 	
+	@Override
+	public boolean isSolid() {
+		return true;
+	}
 
 }

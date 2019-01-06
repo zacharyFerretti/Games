@@ -16,7 +16,7 @@ public class Assets {
 		Mabel = sheet.crop(tileWidth, 0, tileWidth, tileHeight);
 		TreeScene = sheet.crop(tileWidth, tileHeight, tileWidth, tileHeight);
 		Lake = sheet.crop(0, 2*tileHeight, tileWidth*4, tileHeight*2);
-		PitScene = sheet.crop(96,0, tileWidth, tileHeight);
+		PitScene = sheet.crop(2*tileWidth, 0, tileWidth, tileHeight);
 		Logo = ImageLoader.loadImage("/textures/logo.png");
 	}
 	

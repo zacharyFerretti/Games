@@ -2,10 +2,10 @@ package states;
 
 import java.awt.Graphics;
 
-import TileGame.Game;
-import Tiles.Tile;
 import entities.creatures.Player;
 import gfx.Assets;
+import tilegame.Game;
+import tiles.Tile;
 import worlds.World;
 
 public class GameState extends State {

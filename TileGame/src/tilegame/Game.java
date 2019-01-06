@@ -1,13 +1,13 @@
-package TileGame;
+package tilegame;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
-import Display.Display;
-import Input.KeyManager;
+import display.Display;
 import gfx.Assets;
 import gfx.ImageLoader;
 import gfx.SpriteSheet;
+import input.KeyManager;
 import states.GameState;
 import states.MenuState;
 import states.State;

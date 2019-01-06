@@ -2,8 +2,8 @@ package entities.creatures;
 
 import java.awt.Graphics;
 
-import TileGame.Game;
 import gfx.Assets;
+import tilegame.Game;
 
 public class Player extends Creature {
 	
