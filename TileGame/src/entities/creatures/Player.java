@@ -7,16 +7,15 @@ import tilegame.Game;
 
 public class Player extends Creature {
 	
-	private Game game;
-	
 	public Player(Game game, float x, float y) {
-		super(x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
+		super(game, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
 		this.game = game;
 	}
 
 	public void tick() {
 		getInput();
 		move();
+		game.getGameCamera().centerOnEntity(this);
 	}
 	private void getInput() {
 		xMove = 0;
@@ -32,7 +31,9 @@ public class Player extends Creature {
 			xMove = speed;
 	}
 	public void render(Graphics g) {
-		g.drawImage(Assets.Abel, (int)x, (int)y, width, height, null);
+		g.drawImage(Assets.Abel, (int)(x-game.getGameCamera().getxOffSet()),
+				                 (int) (y-game.getGameCamera().getyOffSet()),
+				                 width, height, null);
 	}
 
 }

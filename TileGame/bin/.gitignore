@@ -1,7 +1,5 @@
-/gfx/
-/input/
-/states/
-/tilegame/
-/tiles/
 /worlds/
-/utils/
+/tilegame/
+/gfx/
+/states/
+/entities/
