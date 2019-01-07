@@ -15,7 +15,7 @@ public class GameState extends State {
 	public GameState(Game game) {
 		super(game);
 		player = new Player(game, 108,108);
-		world = new World("");
+		world = new World("res/worlds/world1.txt");
 	}
 	
 	public void update() {

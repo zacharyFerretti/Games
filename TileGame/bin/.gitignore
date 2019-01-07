@@ -1,12 +1,7 @@
-/Input/
-/Display/
-/TileGame/
-/entities/
-/states/
 /gfx/
-/Tiles/
-/worlds/
-/display/
 /input/
+/states/
 /tilegame/
 /tiles/
+/worlds/
+/utils/
