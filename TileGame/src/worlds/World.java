@@ -20,7 +20,7 @@ public class World {
 	public void render(Graphics g) {
 		for(int j = 0; j<width; j++) {
 			for (int i = 0; i<height; i++) {
-				getTile(i,j).render(g,i*Tile.TILEWIDTH,j*Tile.TILEHEIGHT);
+				getTile(j,i).render(g,i*Tile.TILEWIDTH,j*Tile.TILEHEIGHT);
 			}
 		}
 	}
@@ -39,18 +39,24 @@ public class World {
 		height = Utilities.parseInt(tokens[1]);
 		spawnX = Utilities.parseInt(tokens[2]);
 		spawnY = Utilities.parseInt(tokens[3]);
-		tiles = new int [width][height];
 		
+		tiles = new int [width][height];
+		System.out.println(Arrays.toString(tokens));
 		System.out.println("Length of tiles: " + tiles.length);
 		System.out.println("Length of tiles[]: " + tiles[0].length);
 		
 		System.out.println("Width: " + width);
 		System.out.println("Height: " + height);
-		
-		for (int j = 0; j<height; j++) {
-			for (int i = 0; i<width; i++) {
-				tiles[i][j] = Utilities.parseInt(tokens[(i + j * width) + 4]);
+		int temp = 4;
+		for (int y = 0; y<height; y++) {
+			for (int x = 0; x<width; x++) {
+//				System.out.println("The current coordinates: ["+ x + "," + y + "]");
+//				System.out.println("In tokens we are at index " + temp + "and here the value is: " + tokens[temp]);
+				tiles[x][y] = Utilities.parseInt(tokens[(x+y * width) + 4]);
+				temp++;
 			}
 		}
+		
+		System.out.println("Makes it out of this shit");
 	}
 }
