@@ -2,7 +2,7 @@ package states;
 
 import java.awt.Graphics;
 
-import tilegame.Game;
+import tilegame.Handler;
 
 public abstract class State {
 		
@@ -18,9 +18,9 @@ public abstract class State {
 	
 	//Class Methods
 	
-	protected Game game; 
-	public State(Game game) {
-		this.game = game;
+	protected Handler handler; 
+	public State(Handler handler) {
+		this.handler = handler;
 	}
 	
 	public abstract void update();

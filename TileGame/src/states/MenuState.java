@@ -3,11 +3,11 @@ package states;
 import java.awt.Graphics;
 
 import gfx.Assets;
-import tilegame.Game;
+import tilegame.Handler;
 
 public class MenuState extends State {
-	public MenuState(Game game) {
-		super(game);
+	public MenuState(Handler handler) {
+		super(handler);
 	}
 	
 	public void update() {

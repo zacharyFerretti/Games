@@ -1,13 +1,10 @@
 package tilegame;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
 
 import display.Display;
 import gfx.Assets;
 import gfx.GameCamera;
-import gfx.ImageLoader;
-import gfx.SpriteSheet;
 import input.KeyManager;
 import states.GameState;
 import states.MenuState;
@@ -28,13 +25,16 @@ public class Game implements Runnable {
 	private Graphics g;
 	
 	//States
-	private State gameState, menuState;
+	private State gameState;
+	@SuppressWarnings("unused")
+	private State menuState;
 	
 	//Input
 	private KeyManager keyManager;
 	
 	private GameCamera gameCamera;
 	
+	private Handler handler;
 	
 	public Game(String title, int width, int height) {
 		this.width = width;
@@ -51,9 +51,10 @@ public class Game implements Runnable {
 		Assets.init();
 		System.out.println(this);
 		gameCamera = new GameCamera(this,0,0);
+		handler = new Handler(this);
 		
-		gameState = new GameState(this);
-		menuState = new MenuState(this);
+		gameState = new GameState(handler);
+		menuState = new MenuState(handler);
 		
 		State.setState(gameState);
 	}
@@ -100,7 +101,9 @@ public class Game implements Runnable {
 		double delta = 0;
 		long now;
 		long lastTime = System.nanoTime();
+		@SuppressWarnings("unused")
 		long timer = 0;
+		@SuppressWarnings("unused")
 		int ticks = 0;
 		
 		while(running) {

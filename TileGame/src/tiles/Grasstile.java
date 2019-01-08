@@ -1,7 +1,5 @@
 package tiles;
 
-import java.awt.image.BufferedImage;
-
 import gfx.Assets;
 
 public class Grasstile extends Tile {

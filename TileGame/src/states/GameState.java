@@ -3,19 +3,20 @@ package states;
 import java.awt.Graphics;
 
 import entities.creatures.Player;
-import gfx.Assets;
-import tilegame.Game;
-import tiles.Tile;
+import tilegame.Handler;
 import worlds.World;
 
 public class GameState extends State {
 	
 	private Player player;
 	private World world;
-	public GameState(Game game) {
-		super(game);
-		player = new Player(game, 108,108);
-		world = new World(game, "res/worlds/world1.txt");
+	public GameState(Handler handler) {
+		super(handler);
+		
+		world = new World(handler, "res/worlds/world1.txt");
+		handler.setWorld(world);
+		player = new Player(handler, 108,108);
+		
 	}
 	
 	public void update() {

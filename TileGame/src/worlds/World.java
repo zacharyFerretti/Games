@@ -1,31 +1,36 @@
 package worlds;
 
 import java.awt.Graphics;
-import java.util.Arrays;
 
-import tilegame.Game;
-import tiles.PitTile;
+import tilegame.Handler;
 import tiles.Tile;
 import utils.Utilities;
 
 public class World {
 	
-	private Game game;
+	private Handler handler;
+	@SuppressWarnings("unused")
 	private int width, height, spawnX, spawnY;
 	private int [][] tiles;
 	
-	public World(Game game, String path) {
-		this.game = game;
+	public World(Handler handler, String path) {
+		this.handler = handler;
 		loadWorld(path);
 	}
 	public void tick() {
 		
 	}
 	public void render(Graphics g) {
-		for(int j = 0; j<width; j++) {
-			for (int i = 0; i<height; i++) {
-				getTile(i,j).render(g,(int)(i*Tile.TILEWIDTH-game.getGameCamera().getxOffSet()),
-								      (int) (j*Tile.TILEHEIGHT-game.getGameCamera().getyOffSet()));
+		
+		int xStart = (int) Math.max(0, (int) handler.getGameCamera().getxOffSet() / Tile.TILEWIDTH);
+		int xEnd = (int) Math.min(width, (handler.getGameCamera().getxOffSet() + handler.getWidth()) / Tile.TILEWIDTH + 1);
+		int yStart = (int) Math.max(0, (int) handler.getGameCamera().getyOffSet() / Tile.TILEHEIGHT);
+		int yEnd = (int) Math.min(height, (handler.getGameCamera().getyOffSet() + handler.getHeight()) / Tile.TILEHEIGHT+1);
+		
+		for(int j = yStart; j<yEnd; j++) {
+			for (int i = xStart; i<xEnd; i++) {
+				getTile(i,j).render(g,(int)(i*Tile.TILEWIDTH-handler.getGameCamera().getxOffSet()),
+								      (int) (j*Tile.TILEHEIGHT-handler.getGameCamera().getyOffSet()));
 			}
 		}
 	}
